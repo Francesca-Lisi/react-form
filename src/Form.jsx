@@ -9,8 +9,13 @@ const Form = () => {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    // creo un clone e della todoList e aggiungo il nuovo elemento
+    // creo un clone e dell'array e aggiungo il nuovo elemento
     setArticlesList([newListItem, ...articlesList])
+  }
+
+  const handlerRemoveArticle = (index) => {
+    const newListArticles = articlesList.filter((item, i) => i !== index)
+    setArticlesList(newListArticles)
   }
 
 
@@ -45,7 +50,9 @@ const Form = () => {
                   {/* <span>Altre info</span> */}
                 </div>
                 <div className='align-items-center'>
-                  <i class="fa-solid fa-trash-can m-2"></i>
+                  <i class="fa-solid fa-trash-can m-2"
+                    onClick={() => handlerRemoveArticle(index)}
+                  ></i>
                 </div>
               </li>
             ))}
